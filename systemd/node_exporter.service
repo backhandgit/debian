@@ -1,0 +1,13 @@
+[Unit]
+Description=node exporter
+After=network-online.target
+
+
+[Service]
+Restart=always
+Type=simple
+ExecStart=/root/metrics/node_exporter/node_exporter
+
+
+[Install]
+WantedBy=multi-user.target

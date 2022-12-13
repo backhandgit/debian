@@ -1,0 +1,18 @@
+[Unit]
+Description=prometheus server
+After=network-online.target
+
+
+[Service]
+Restart=always
+Type=simple
+ExecStart=/root/metrics/prometheus/prometheus \
+  --config.file=/root/metrics/prometheus/prometheus.yml \
+  --enable-feature=agent \
+  --storage.agent.path=/tmp/prometheus.agent
+
+ExecReload=kill -HUP $MAINPID
+
+
+[Install]
+WantedBy=multi-user.target

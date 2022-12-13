@@ -1,0 +1,21 @@
+[Unit]
+Description=grafana agent
+After=network-online.target
+
+
+[Service]
+Restart=always
+Type=simple
+
+ExecStart=/root/metrics/grafana-agent \
+  -disable-reporting \
+  -metrics.wal-directory=/tmp/wal \
+  -config.file="/root/metrics/grafana-agent.yaml" \
+  -config.enable-read-api \
+  -server.http.address="flathead:12345"
+
+ExecReload=kill -HUP $MAINPID
+
+
+[Install]
+WantedBy=multi-user.target
