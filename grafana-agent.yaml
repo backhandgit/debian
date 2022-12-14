@@ -25,13 +25,11 @@ integrations:
   agent:
     enabled: true
     relabel_configs:
-    - source_labels: [__address__]
-      regex: "([^:]+):\\d+"
+    - source_labels: [agent_hostname]
       target_label: instance
   node_exporter:
     enabled: true
     relabel_configs:
-    - source_labels: [__address__]
-      regex: "([^:]+):\\d+"
+    - source_labels: [agent_hostname]
       target_label: instance
 
