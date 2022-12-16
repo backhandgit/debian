@@ -4,6 +4,7 @@ server:
 metrics:
   global:
     scrape_interval: 30s
+    scrape_timeout: 1s
     remote_write:
     - url: https://prometheus-blocks-prod-us-central1.grafana.net/api/prom/push
       basic_auth:
